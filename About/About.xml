@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>绮罗：星际战争</name>
+	<!-- 作者 -->
+	<author>caliniya</author>
+	<packageId>caliniya.rimWorld.starWar.Kiiro</packageId>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<description>猫猫也想要上太空</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>erdelf.HumanoidAlienRaces</packageId>
+			<displayName>Humanoid Alien Races</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/839005762</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>Ancot.KiiroRace</packageId>
+			<displayName>Kiiro Race</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2988200143</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>erdelf.HumanoidAlienRaces</li>
+		<li>Ancot.KiiroRace</li>
+	</loadAfter>
+</ModMetaData>

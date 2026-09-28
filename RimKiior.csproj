@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- RimWorld 1.6 基于 .NET Framework 4.7.2 运行时 -->
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>RimKiior</RootNamespace>
+    <AssemblyName>RimKiior</AssemblyName>
+    <!-- 编译产物直接输出到模组的 Assemblies 目录,build.ps1 会同步到游戏 -->
+    <OutputPath>Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- 游戏只需要 Release DLL,不带调试信息,体积最小 -->
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- 不需要 NuGet 包引用 .NET Framework 官方引用程序集(本机没装 4.7.2 开发包时靠它编译) -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 游戏本体程序集:只引用,不复制 -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>E:\app\rimworld\RimWorld16\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>E:\app\rimworld\RimWorld16\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Harmony(你已装 Brrainz.Harmony 模组) -->
+    <Reference Include="0Harmony">
+      <HintPath>E:\app\rimworld\RimWorld16\Mods\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\project\\RimKiior\\RimKiior.csproj": {}
+  },
+  "projects": {
+    "D:\\project\\RimKiior\\RimKiior.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\RimKiior\\RimKiior.csproj",
+        "projectName": "RimKiior",
+        "projectPath": "D:\\project\\RimKiior\\RimKiior.csproj",
+        "packagesPath": "C:\\Users\\yiyi\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\RimKiior\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yiyi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.425\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

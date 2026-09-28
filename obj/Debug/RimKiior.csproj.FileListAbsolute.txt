@@ -1,0 +1,7 @@
+D:\project\RimKiior\Assemblies\RimKiior.dll
+D:\project\RimKiior\obj\Debug\RimKiior.csproj.AssemblyReference.cache
+D:\project\RimKiior\obj\Debug\RimKiior.GeneratedMSBuildEditorConfig.editorconfig
+D:\project\RimKiior\obj\Debug\RimKiior.AssemblyInfoInputs.cache
+D:\project\RimKiior\obj\Debug\RimKiior.AssemblyInfo.cs
+D:\project\RimKiior\obj\Debug\RimKiior.csproj.CoreCompileInputs.cache
+D:\project\RimKiior\obj\Debug\RimKiior.dll
