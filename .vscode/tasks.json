@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "编译模组 (dotnet build)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": ["build"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "编译并部署到游戏",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/build.ps1"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": ["编译模组 (dotnet build)"]
+		}
+	]
+}

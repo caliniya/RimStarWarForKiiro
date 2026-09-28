@@ -1,0 +1,13 @@
+# 构建产物
+obj/
+bin/
+dist/
+
+# VS Code / IDE
+.vs/
+.idea/
+*.user
+
+# 系统文件
+Thumbs.db
+.DS_Store

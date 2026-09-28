@@ -1,0 +1,22 @@
+{
+	// 搜索/全局查找时忽略构建产物和分发包
+	"search.exclude": {
+		"**/bin": true,
+		"**/obj": true,
+		"**/dist": true,
+		"**/Assemblies": true
+	},
+	"files.associations": {},
+	// XML:启用自动补全时使用的本地 schema 由 Red Hat XML 扩展处理,这里只调格式
+	"[xml]": {
+		"editor.formatOnSave": true,
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false
+	},
+	"[csharp]": {
+		"editor.formatOnSave": true,
+		"editor.tabSize": 4
+	},
+	// C# 扩展对 net472 的支持配置
+	"dotnet.defaultSolution": "RimKiior.csproj"
+}
