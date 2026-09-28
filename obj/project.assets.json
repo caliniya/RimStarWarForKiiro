@@ -420,9 +420,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\project\\RimKiior\\RimKiior.csproj",
-      "projectName": "RimKiior",
-      "projectPath": "D:\\project\\RimKiior\\RimKiior.csproj",
+      "projectUniqueName": "D:\\project\\RimKiior\\StarWarKiiro.csproj",
+      "projectName": "StarWarKiiro",
+      "projectPath": "D:\\project\\RimKiior\\StarWarKiiro.csproj",
       "packagesPath": "C:\\Users\\yiyi\\.nuget\\packages\\",
       "outputPath": "D:\\project\\RimKiior\\obj\\",
       "projectStyle": "PackageReference",

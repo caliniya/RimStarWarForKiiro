@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("RimKiior")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("StarWarKiiro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+088af9bc0f3b5781a67d3205d464e44f2a847b69")]
-[assembly: System.Reflection.AssemblyProductAttribute("RimKiior")]
-[assembly: System.Reflection.AssemblyTitleAttribute("RimKiior")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+098edfbaee6b93b55a654f17cf4999dc77d85b14")]
+[assembly: System.Reflection.AssemblyProductAttribute("StarWarKiiro")]
+[assembly: System.Reflection.AssemblyTitleAttribute("StarWarKiiro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。

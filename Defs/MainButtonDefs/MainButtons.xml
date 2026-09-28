@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- 底部选项卡:完成"星图理论"研究后由 MainButtonWorker_StarMap 控制显示 -->
+	<MainButtonDef>
+		<defName>StarWarKiiro_StarMap</defName>
+		<label>星图</label>
+		<description>查看星系态势,管理你的舰队与太空资产。</description>
+		<workerClass>StarWarKiiro.MainButtonWorker_StarMap</workerClass>
+		<tabWindowClass>StarWarKiiro.MainTabWindow_StarMap</tabWindowClass>
+		<order>46</order>
+		<closesWorldView>true</closesWorldView>
+	</MainButtonDef>
+
+</Defs>

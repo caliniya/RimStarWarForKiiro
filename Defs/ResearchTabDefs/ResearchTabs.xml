@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- 专属研究页签:研究界面里会多出一个独立科技树 -->
+	<ResearchTabDef>
+		<defName>StarWarKiiro_StarTech</defName>
+		<label>绮罗星际学</label>
+		<generalTitle>绮罗星际学</generalTitle>
+		<generalDescription>绮罗们开始研究如何走向太空</generalDescription>
+	</ResearchTabDef>
+
+</Defs>

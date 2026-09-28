@@ -16,7 +16,5 @@
 	"[csharp]": {
 		"editor.formatOnSave": true,
 		"editor.tabSize": 4
-	},
-	// C# 扩展对 net472 的支持配置
-	"dotnet.defaultSolution": "RimKiior.csproj"
+	}
 }
