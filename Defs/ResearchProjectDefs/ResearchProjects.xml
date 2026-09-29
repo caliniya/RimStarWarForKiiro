@@ -730,7 +730,7 @@
 	<ResearchProjectDef>
 		<defName>StarWarKiiro_SmallMissiles</defName>
 		<label>小型导弹技术</label>
-		<description>导弹的小型化与通用化,让导弹能装上舰船、卫星与发射井之外的几乎所有平台。</description>
+		<description>导弹的小型化与通用化,让导弹能单人携带</description>
 		<baseCost>2800</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites>
