@@ -119,16 +119,11 @@ namespace StarWarKiiro.StarMap
 
             if (rng.NextDouble() < 0.6 && count >= 2)
             {
-                // 小行星带:塞进两个相邻轨道之间
-                float a = s.Planets[rng.Next(s.Planets.Count - 1)].OrbitRadius;
-                float b = s.Planets[s.Planets.Count - 1].OrbitRadius;
-                for (int i = 0; i < s.Planets.Count - 1; i++)
-                {
-                    if (s.Planets[i].OrbitRadius < b) a = s.Planets[i].OrbitRadius;
-                }
-                s.HasAsteroidBelt = true;
-                s.BeltInner = a + 5f;
+                // 小行星带:随机塞进某对相邻轨道之间(与行星同源,由种子决定)
+                int gapIndex = rng.Next(count - 1);
+                s.BeltInner = s.Planets[gapIndex].OrbitRadius + 5f;
                 s.BeltOuter = s.BeltInner + 4f;
+                s.HasAsteroidBelt = true;
             }
 
             return s;

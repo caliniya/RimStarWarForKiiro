@@ -420,11 +420,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\project\\RimKiior\\StarWarKiiro.csproj",
+      "projectUniqueName": "D:\\project\\KiiroStarWARForRim\\StarWarKiiro.csproj",
       "projectName": "StarWarKiiro",
-      "projectPath": "D:\\project\\RimKiior\\StarWarKiiro.csproj",
+      "projectPath": "D:\\project\\KiiroStarWARForRim\\StarWarKiiro.csproj",
       "packagesPath": "C:\\Users\\yiyi\\.nuget\\packages\\",
-      "outputPath": "D:\\project\\RimKiior\\obj\\",
+      "outputPath": "D:\\project\\KiiroStarWARForRim\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yiyi\\AppData\\Roaming\\NuGet\\NuGet.Config"

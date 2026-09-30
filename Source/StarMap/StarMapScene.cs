@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -6,16 +7,21 @@ namespace StarWarKiiro.StarMap
     // 星图渲染场景:独立相机 + RenderTexture。
     // 场景整体放在主地图上空 10 万单位处,相机的远裁剪面很短,
     // 所以主场景的所有几何体天然被剔除,不需要注册新 Layer
+    [StaticConstructorOnStartup]
     public static class StarMapScene
     {
         private const float SceneHeight = 100000f;
 
         private static GameObject root;
         private static GameObject systemRoot;
+        private static GameObject orbitsRoot;
+        private static GameObject selectionRoot;
         private static Camera cam;
         private static RenderTexture rt;
         private static StarSystem system;
         private static Shader shader;
+        // 所有程序生成的 Mesh:GameObject 销毁不会释放 Mesh 资产,需登记后统一销毁防泄漏
+        private static readonly List<Mesh> createdMeshes = new List<Mesh>();
 
         public static StarSystem System => system;
         public static RenderTexture Texture => rt;
@@ -48,10 +54,6 @@ namespace StarWarKiiro.StarMap
                 systemRoot = new GameObject("System");
                 systemRoot.transform.SetParent(root.transform, false);
                 BuildSystem();
-
-                var stars = new GameObject("Starfield");
-                stars.transform.SetParent(root.transform, false);
-                BuildStarfield(stars.transform);
 
                 var camGo = new GameObject("Camera");
                 camGo.transform.SetParent(root.transform, false);
@@ -86,6 +88,7 @@ namespace StarWarKiiro.StarMap
         public static void Regenerate()
         {
             if (root == null) return;
+            SetSelection(Vector3.zero, 0f, false);
             Find.World?.GetComponent<WorldComponent_StarSystem>()?.RerollSeed();
             system = Find.World?.GetComponent<WorldComponent_StarSystem>()?.System;
             if (system == null) return;
@@ -94,6 +97,8 @@ namespace StarWarKiiro.StarMap
 
         public static void Dispose()
         {
+            DestroySelectionMeshes();
+            DestroySystemMeshes();
             if (rt != null)
             {
                 rt.Release();
@@ -107,11 +112,21 @@ namespace StarWarKiiro.StarMap
             }
             cam = null;
             systemRoot = null;
+            orbitsRoot = null;
+            selectionRoot = null;
         }
 
         public static void Render()
         {
+            UpdateResearchVisibility();
             if (cam != null && rt != null) cam.Render();
+        }
+
+        // 轨道线需要「高等数学」;其余(恒星/行星/小行星带)在星图解锁时即可见
+        private static void UpdateResearchVisibility()
+        {
+            if (orbitsRoot != null)
+                orbitsRoot.SetActive(StarWarKiiroDefOf.IsFinished(StarWarKiiroDefOf.StarWarKiiro_AdvancedMathematics));
         }
 
         // 窗口里做平移:屏幕像素位移换算成世界位移
@@ -149,12 +164,52 @@ namespace StarWarKiiro.StarMap
             return new Vector3(Mathf.Cos(rad) * p.OrbitRadius, 0f, Mathf.Sin(rad) * p.OrbitRadius);
         }
 
+        // 世界半径 → 屏幕像素半径(以 GUI 地图区高度为准,和点击判定同一坐标空间)
+        public static float WorldToScreenRadius(float worldRadius, float mapHeight)
+        {
+            if (cam == null) return worldRadius;
+            return worldRadius / (cam.orthographicSize * 2f) * mapHeight;
+        }
+
+        // 选中高亮:在目标位置画一圈亮环。radius 为世界单位(略大于本体)
+        public static void SetSelection(Vector3 localPos, float worldRadius, bool active)
+        {
+            if (root == null || shader == null) return;
+
+            if (selectionRoot != null)
+            {
+                DestroySelectionMeshes();
+                Object.Destroy(selectionRoot);
+                selectionRoot = null;
+            }
+            if (!active) return;
+
+            selectionRoot = new GameObject("Selection");
+            selectionRoot.transform.SetParent(root.transform, false);
+
+            float outer = worldRadius + 1.6f;
+            float inner = worldRadius + 0.7f;
+            var ring = AddMeshObject(selectionRoot.transform, localPos,
+                RingMesh(inner, outer, 96), new Color(0.35f, 0.95f, 1f, 0.95f));
+            // 稍抬高一点,避免和本体面片共面闪烁
+            if (ring != null) ring.transform.localPosition += new Vector3(0f, 0.5f, 0f);
+
+            var outerRing = AddMeshObject(selectionRoot.transform, localPos,
+                RingMesh(outer + 0.8f, outer + 1.15f, 96), new Color(0.35f, 0.95f, 1f, 0.4f));
+            if (outerRing != null) outerRing.transform.localPosition += new Vector3(0f, 0.5f, 0f);
+        }
+
         private static void BuildSystem()
         {
             for (int i = systemRoot.transform.childCount - 1; i >= 0; i--)
                 Object.Destroy(systemRoot.transform.GetChild(i).gameObject);
+            DestroySystemMeshes();
+
+            orbitsRoot = new GameObject("Orbits");
+            orbitsRoot.transform.SetParent(systemRoot.transform, false);
 
             var s = system;
+            // 恒星 + 行星 + 小行星带:天文学解锁星图后即可见
             AddDisc(systemRoot.transform, Vector3.zero, s.StarRadius, s.StarColor);
 
             if (s.HasAsteroidBelt)
@@ -163,28 +218,18 @@ namespace StarWarKiiro.StarMap
 
             foreach (var p in s.Planets)
             {
-                AddRing(systemRoot.transform, p.OrbitRadius, 0.35f, new Color(1f, 1f, 1f, 0.16f));
+                // 轨道线单独挂在 orbitsRoot,由高等数学控制显隐
+                AddRing(orbitsRoot.transform, p.OrbitRadius, 0.35f, new Color(1f, 1f, 1f, 0.16f));
                 AddDisc(systemRoot.transform, PlanetLocalPos(p), p.Radius, p.Color);
                 if (p == s.HomePlanet)
                 {
-                    // 母星高亮:青色双环
+                    // 母星高亮:青色双环(不是轨道,始终显示)
                     AddRing(systemRoot.transform, p.Radius + 1.0f, 0.3f, new Color(0.3f, 1f, 0.85f, 0.9f));
                     AddRing(systemRoot.transform, p.Radius + 1.8f, 0.2f, new Color(0.3f, 1f, 0.85f, 0.5f));
                 }
             }
-        }
 
-        private static void BuildStarfield(Transform parent)
-        {
-            var rng = new System.Random(114514);
-            for (int i = 0; i < 260; i++)
-            {
-                float x = ((float)rng.NextDouble() - 0.5f) * 1200f;
-                float z = ((float)rng.NextDouble() - 0.5f) * 1200f;
-                float r = 0.25f + (float)rng.NextDouble() * 0.5f;
-                float b = 0.25f + (float)rng.NextDouble() * 0.45f;
-                AddDisc(parent, new Vector3(x, 0f, z), r, new Color(b, b, Mathf.Min(1f, b + 0.1f)));
-            }
+            UpdateResearchVisibility();
         }
 
         private static void AddDisc(Transform parent, Vector3 localPos, float radius, Color color)
@@ -197,9 +242,10 @@ namespace StarWarKiiro.StarMap
             AddMeshObject(parent, Vector3.zero, RingMesh(radius - thickness / 2f, radius + thickness / 2f), color);
         }
 
-        private static void AddMeshObject(Transform parent, Vector3 localPos, Mesh mesh, Color color)
+        private static GameObject AddMeshObject(Transform parent, Vector3 localPos, Mesh mesh, Color color)
         {
-            if (shader == null) return;
+            if (shader == null) return null;
+            createdMeshes.Add(mesh);
             var go = new GameObject("mesh");
             go.transform.SetParent(parent, false);
             go.transform.localPosition = localPos;
@@ -209,6 +255,30 @@ namespace StarWarKiiro.StarMap
             mr.sharedMaterial = mat;
             mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             mr.receiveShadows = false;
+            return go;
+        }
+
+        private static void DestroySelectionMeshes()
+        {
+            // 选中环的 Mesh 挂在 selectionRoot 下,重建/关闭时释放
+            if (selectionRoot == null) return;
+            foreach (Transform child in selectionRoot.transform)
+            {
+                var mf = child.GetComponent<MeshFilter>();
+                if (mf != null && mf.sharedMesh != null)
+                {
+                    createdMeshes.Remove(mf.sharedMesh);
+                    Object.Destroy(mf.sharedMesh);
+                }
+            }
+        }
+
+        private static void DestroySystemMeshes()
+        {
+            // 释放星系本体的所有网格(恒星/行星/轨道/母星环)
+            for (int i = createdMeshes.Count - 1; i >= 0; i--)
+                Object.Destroy(createdMeshes[i]);
+            createdMeshes.Clear();
         }
 
         // 圆盘网格:中心 + 圆周三角扇,正反两面都生成索引,免得纠结绕序/背面剔除

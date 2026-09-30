@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- 把物资搬进火箭发射台 -->
+	<JobDef>
+		<defName>StarWarKiiro_LoadLaunchPad</defName>
+		<driverClass>StarWarKiiro.JobDriver_LoadLaunchPad</driverClass>
+		<reportString>Loading ingredients to TargetB.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<collideWithPawns>false</collideWithPawns>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>StarWarKiiro_LoadLaunchPad</defName>
+		<label>装载火箭发射台</label>
+		<giverClass>StarWarKiiro.WorkGiver_LoadLaunchPad</giverClass>
+		<workType>Hauling</workType>
+		<verb>load</verb>
+		<gerund>loading</gerund>
+		<priorityInType>85</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+</Defs>

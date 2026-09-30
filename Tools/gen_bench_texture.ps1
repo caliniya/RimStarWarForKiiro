@@ -1,5 +1,5 @@
 Add-Type -AssemblyName System.Drawing
-$OutDir = 'D:/project/RimKiior/Textures/Things/Building/Production'
+$OutDir = 'D:/project/KiiroStarWARForRim/Textures/Things/Building/Production'
 New-Item $OutDir -ItemType Directory -Force | Out-Null
 
 function Draw-BenchBody {

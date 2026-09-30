@@ -1,5 +1,5 @@
 Add-Type -AssemblyName System.Drawing
-$OutDir = 'D:/project/RimKiior/Textures/Things/Item/Resource'
+$OutDir = 'D:/project/KiiroStarWARForRim/Textures/Things/Item/Resource'
 New-Item $OutDir -ItemType Directory -Force | Out-Null
 
 # name -> base color, highlight color, shape (ingot / canister / crate / chip / missile)

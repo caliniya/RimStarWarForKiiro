@@ -1,7 +1,7 @@
 Add-Type -AssemblyName System.Drawing
 # 把 4 帧横排的研究台贴图拆成 Graphic_Multi 需要的 4 个方向文件
-$src = 'D:/project/RimKiior/Textures/Things/Building/Production/StarWarKiiro_AdvResearchBench.png'
-$dstDir = 'D:/project/RimKiior/Textures/Things/Building/Production'
+$src = 'D:/project/KiiroStarWARForRim/Textures/Things/Building/Production/StarWarKiiro_AdvResearchBench.png'
+$dstDir = 'D:/project/KiiroStarWARForRim/Textures/Things/Building/Production'
 $suffixes = @('_north', '_east', '_south', '_west')
 
 $atlas = [System.Drawing.Bitmap]([System.Drawing.Image]::FromFile($src))

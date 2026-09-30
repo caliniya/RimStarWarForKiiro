@@ -1,0 +1,67 @@
+AbilityDefs : Abilities.xml
+BabyPlayDefs : BabyPlay.xml
+BeardDefs : BeardDefs.xml
+Bodies : Bodies_Mechanoid_Heavy.xml, Bodies_Mechanoid_Light.xml, Bodies_Mechanoid_Medium.xml, Bodies_Mechanoid_Superheavy.xml, BodyPartGroups.xml, BodyParts_Mechanoid.xml
+BossgroupDefs : Bossgroups.xml
+DamageDefs : Damages_Misc.xml, Damages_RangedWeapon.xml, Damages_Stun.xml
+DutyDefs : Duties_MechBosses.xml, Duties_Misc.xml, Duties_Rituals.xml
+Effects : Effecter_BabyFits.xml, Effecter_GivingBirth.xml, Effecter_LifeStages.xml, Effecter_Mechanitor.xml, Effecter_Misc.xml, Effecter_Play.xml, Fleck_Visual.xml, Mote_Meta.xml, Mote_Visual.xml
+FactionDefs : Factions_Misc.xml
+GameConditionDefs : GameConditions_Misc.xml
+GeneDefs : GeneCategoryDefs.xml, GeneDefs_Abilities.xml, GeneDefs_Cosmetic.xml, GeneDefs_Endogenes.xml, GeneDefs_Health.xml, GeneDefs_Misc.xml, GeneDefs_Sanguophage.xml, GeneDefs_Spectrum.xml, GeneTemplateDefs.xml, XenotypeDefs.xml, XenotypeIconDefs.xml
+HeadTypeDefs : HeadTypeDefs.xml
+HediffDefs : Hediffs_BodyParts_Detoxifier.xml, Hediffs_Global_Misc.xml, Hediffs_Local_Misc.xml, Hediffs_Mechanitor.xml, Hediffs_Mechs.xml, Hediffs_Various.xml
+HistoryEventDefs : HistoryEventDefs.xml
+ImpactSoundTypeDefs : ImpactSoundTypeDefs.xml
+IncidentDefs : Incidents_Map_Special.xml
+InteractionDefs : Interactions_Social.xml
+JobDefs : Jobs_Childcare.xml, Jobs_Learning.xml, Jobs_Misc.xml, Jobs_Play.xml, Jobs_Work.xml
+LayoutDefs : Layouts_Misc.xml
+LayoutRoomDefs : LayoutRooms_Common.xml, LayoutRooms_MechanitorComplex.xml
+LearningDesireDefs : LearningDesires.xml
+MainButtonDefs : MainButtons.xml
+MapGeneration : BasePlayerMapGenerator.xml, CommonMapGenerator.xml
+MapMeshFlagDefs : MapMeshFlagDefs.xml
+MemeDefs : Memes_Bloodfeeding.xml
+MentalStateDefs : MentalStates_BabyFits.xml, MentalStates_Special.xml
+Misc : ClamorDefs.xml, CustomNotificationLetters.xml, DesignationCategories.xml, FurDefs.xml, MechWorkModes.xml, ShaderTypes.xml
+NeedDefs : Needs.xml
+PawnColumnDefs : PawnColumns_Icon.xml, PawnColumns_Mechs.xml
+PawnKindDefs_Humanlikes : PawnKinds_Impid.xml, PawnKinds_Pigskin.xml, PawnKinds_Special.xml, PawnKinds_Waster.xml, PawnKinds_Yttakin.xml
+PawnRelationDefs : PawnRelations_FamiltyByBlood.xml, PawnRelations_Misc.xml
+PawnTableDefs : PawnTables.xml
+PreceptDefs : Precepts_Bloodfeeders.xml, Precepts_ChildLabor.xml, Precepts_GrowthVat.xml, Precepts_Mechanoids.xml, Precepts_Rituals.xml, Precepts_Xenotype.xml
+PreconfiguredIdeos : IdeoPresetDefs.xml
+PrefabDefs : CommonRoomPrefabs.xml
+PrisonerIneractionModeDefs : PrisonerInteractionMode.xml
+QuestScriptDefs : Script_Bossgroup.xml, Script_Loot_AncientComplex.xml, Script_MechanitorShip.xml, Script_PollutionDump.xml, Script_PollutionRaid.xml, Script_PollutionRetaliation.xml, Script_SanguophageMeetingHost.xml, Script_SanguophageShip.xml, Script_StartingMech.xml, Script_TransportPodCrash_Baby.xml
+RecipeDefs : Recipes_Food.xml, Recipes_MechGestator_Heavy.xml, Recipes_MechGestator_Light.xml, Recipes_MechGestator_Medium.xml, Recipes_MechGestator_SuperHeavy.xml, Recipes_MechResurrection.xml, Recipes_Surgery_Misc.xml, SurgeryOutcomeEffectDefs.xml
+RecordDefs : Records_Time.xml
+ResearchProjectDefs : ResearchProjects_Mechanitor.xml, ResearchProjects_Misc.xml
+Rituals : Ritual_Behaviors.xml, Ritual_Outcomes.xml, Ritual_Patterns.xml, Ritual_Targets.xml
+Rooms : RoomRoles.xml, RoomStats.xml
+RuleDefs : Rules_AncientComplex.xml, Rules_Basic.xml
+RulePackDefs : RulePacks_Damages.xml, RulePacks_Genepacks.xml, RulePacks_GrowthMoments.xml, RulePacks_Namers_Faction.xml, RulePacks_Namers_Mechs.xml, RulePacks_Namers_Xenohumans.xml
+Scenarios : Scenarios.xml, ScenParts_Various.xml
+Sites : AncientComplex_Mechanitor.xml
+SketchResolverDefs : SketchResolvers.xml
+SoundDefs : Building_Oneshot_Misc.xml, Building_Sustainers_Ambiences.xml, Building_Sustainers_Misc.xml, Interact_Mechinator.xml, Interact_Oneshot_Misc.xml, Interact_Sustainers_Learning.xml, Interact_Sustainers_Misc.xml, Interact_Sustainers_Play.xml, Pawn_Human_Misc.xml, Pawn_Humanlike_Vox_Genes.xml, Pawn_Mech_Misc.xml, Pawn_Mech_Vox_Heavy.xml, Pawn_Mech_Vox_Light.xml, Pawn_Mech_Vox_Medium.xml, Pawn_Mech_Vox_SuperHeavy.xml, Pawn_Oneshot_Birthdays.xml, UI_Oneshot_Misc.xml, UI_Oneshots_Designation.xml, World_Oneshots_Explosions.xml, World_Oneshots_Impacts.xml, World_Oneshots_Misc.xml, World_Oneshots_Weapons.xml, World_Sustainers_Weapons.xml
+SpecialThingFilterDefs : SpecialThingFilters.xml
+Stats : StatCategories.xml, Stats_Buildings_Special.xml, Stats_Misc.xml, Stats_Pawns_Combat.xml, Stats_Pawns_General.xml, Stats_Pawns_WorkGeneral.xml
+Storyteller : Incidents_Map_Misc.xml, Incidents_Map_Threats.xml, RaidAgeRestrictions.xml
+TaleDefs : Tales_DoublePawns.xml, Tales_Incident.xml
+ThingDefs_Buildings : Buildings_Ancient_Mechanitor.xml, Buildings_Ancient_Outdoors.xml, Buildings_Deathrest.xml, Buildings_Furniture.xml, Buildings_Misc.xml, Buildings_Production.xml, Buildings_Rechargers.xml
+ThingDefs_Items : Items_Food.xml, Items_Resource_Manufactured.xml, Items_Resources_RawPlant.xml, Items_Unfinished.xml, Items_Various.xml
+ThingDefs_Misc : Apparel_Child.xml, Apparel_Headgear.xml, Apparel_Mech.xml, Apparel_Packs.xml, Apparel_Various.xml, Ethereal_Skyfallers.xml, Ethereal_Various.xml, Filth_Various.xml
+ThingDefs_Plants : Plants_Cultivated_Farm.xml, Plants_Special.xml, Plants_Wild_General.xml
+ThingDefs_Races : Races_Animal_Pollution.xml, Races_Mechanoids_Heavy.xml, Races_Mechanoids_Light.xml, Races_Mechanoids_Medium.xml, Races_Mechanoids_SuperHeavy.xml
+ThinkTreeDefs : HumanlikeBaby.xml, SubTrees_Mech.xml
+ThoughtDefs : Thoughts_Memory_Childcare.xml, Thoughts_Memory_Death.xml, Thoughts_Memory_Eating.xml, Thoughts_Memory_Social.xml, Thoughts_Memory_Special.xml, Thoughts_Situation_Genes.xml, Thoughts_Situation_Needs.xml, Thoughts_Situation_Social.xml, Thoughts_Situation_Special.xml, Thoughts_Situational_Children.xml
+TipSetDefs : Tips.xml
+ToolCapacityDefs : ToolCapacityDefs.xml
+TraitDefs : Traits.xml
+TransportShipDefs : TransportShipDefs.xml
+Tutor : Tutor.xml
+WorkGiverDefs : WorkGivers.xml
+WorkTypeDefs : WorkTypes.xml
+WorldGeneration : WorldGenerator.xml

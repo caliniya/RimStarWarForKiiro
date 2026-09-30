@@ -11,7 +11,7 @@ $ProjectRoot = $PSScriptRoot
 $GameModsDir = "E:\app\rimworld\RimWorld16\Mods"
 
 # 不应进入模组成品的开发文件
-$ExcludeDirs  = @(".git", ".vs", "obj", "bin", "dist", ".vscode")
+$ExcludeDirs  = @(".git", ".vs", "obj", "bin", "dist", ".vscode", "temp", "Tools")
 $ExcludeFiles = @("build.ps1", "build.bat", "DESIGN.md", ".gitignore")
 
 # ---- 0. 游戏运行中会锁住 DLL,无法部署 ----

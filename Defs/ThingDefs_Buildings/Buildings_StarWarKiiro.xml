@@ -10,10 +10,7 @@
 		<size>(5,2)</size>
 		<minifiedDef/>
 		<thingCategories Inherit="false"/>
-		<stuffCategories>
-			<li>Metallic</li>
-		</stuffCategories>
-		<costStuffCount>150</costStuffCount>
+		<!-- 同发射台/控制台:固定成本,不做材质选择,建造时不会显示「钢铁」之类的材质前缀 -->
 		<costList>
 			<Steel>150</Steel>
 			<Plasteel>50</Plasteel>
@@ -78,6 +75,118 @@
 			<workTableRoomRole>Laboratory</workTableRoomRole>
 			<workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
 		</building>
+	</ThingDef>
+
+	<!-- 火箭发射台:在台面上组装运载火箭。建造解锁自「化学动力学」 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>StarWarKiiro_RocketLaunchPad</defName>
+		<label>火箭发射台</label>
+		<description>用于组装与停放运载火箭的大型发射工位。选择「组装运载火箭」并投入物资后，经过一段时间即可完成总装，再由火箭控制台下达发射指令。</description>
+		<thingClass>StarWarKiiro.Building_RocketLaunchPad</thingClass>
+		<size>(5,5)</size>
+		<minifiedDef/>
+		<thingCategories Inherit="false"/>
+		<!-- 不参与材质选择:去掉 stuffCategories/costStuffCount,建造时不会显示「钢铁」之类的材质前缀 -->
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<graphicData>
+			<texPath>Things/Building/Production/StarWarKiiro_RocketLaunchPad</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.15</staticSunShadowHeight>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>30</pathCost>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.3</Flammability>
+		</statBases>
+		<comps Inherit="False">
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>600</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<!-- 覆写了 Tick() 推进组装进度;ThingDef 默认 tickerType 是 Never,不显式声明就不会被调用 -->
+		<tickerType>Normal</tickerType>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Production</designationCategory>
+		<uiOrder>2620</uiOrder>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>0</constructionSkillPrerequisite>
+		<researchPrerequisites>
+			<!-- 化学动力学 -->
+			<li>StarWarKiiro_ChemicalPropulsion</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<!-- 火箭控制台:下达发射指令。建造解锁自「太空电子技术」 -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>StarWarKiiro_RocketControlConsole</defName>
+		<label>火箭控制台</label>
+		<description>汇集发射台与火箭状态的指挥终端。在这里下达发射、中止与回收指令。发射流程需要「基础轨道研究技术」支持。</description>
+		<thingClass>StarWarKiiro.Building_RocketControlConsole</thingClass>
+		<size>(3,2)</size>
+		<minifiedDef/>
+		<thingCategories Inherit="false"/>
+		<!-- 同发射台:固定成本,不做材质选择 -->
+		<costList>
+			<Steel>15</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<graphicData>
+			<texPath>Things/Building/Production/StarWarKiiro_RocketControlConsole</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(3.5,2.5)</drawSize>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<statBases>
+			<MaxHitPoints>280</MaxHitPoints>
+			<WorkToBuild>100</WorkToBuild>
+			<Flammability>0.4</Flammability>
+		</statBases>
+		<comps Inherit="False">
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>350</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Production</designationCategory>
+		<uiOrder>2621</uiOrder>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>0</constructionSkillPrerequisite>
+		<researchPrerequisites>
+			<!-- 太空电子技术 -->
+			<li>StarWarKiiro_SpaceElectronics</li>
+		</researchPrerequisites>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
 	</ThingDef>
 
 </Defs>
